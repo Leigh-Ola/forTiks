@@ -1,0 +1,44 @@
+<template>
+    <main id="app-layout">
+        <div class="layout-sub w-full h-full lg:w-3/5 lg:h-5/6">
+            <Nuxt/>
+        </div>
+    </main>
+</template>
+
+<style>
+/* create a variable called bg-red and give it a value of #00f */
+:root {
+    /* --bg-red: #00f; */
+    --color-black: #211f20;
+    --color-gold: #ec8b21;
+    --color-orange: #d66425;
+    --color-blue: #016d77;
+    --color-green: #007577;
+}
+
+</style>
+<style scoped>
+body{
+    margin: 0px; padding: 0px; background: white;
+    font-size: 100%;
+}
+#app-layout{
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%; height: 100vh;
+    min-width: max-content; min-height: 100%;
+    display: flex;
+}
+.layout-sub{
+    background: white;
+    margin: auto;
+    box-shadow: 0px 0px 15px #ccc;
+
+}
+</style>
+
+<script>
+export default {
+    middleware: ['join']
+}
+</script>
