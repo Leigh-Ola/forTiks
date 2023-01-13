@@ -18,7 +18,7 @@
         <div class="input-container-box w-full flex justify-center relative">
             <!-- <font-awesome-icon icon="fa-solid fa-envelope" class="icon" /> -->
             <FormulateInput type="email" 
-                name="email"
+                name="email" 
                 outer-class="email-container"
                 placeholder="Email"
                 validation="bail|required|email" 
