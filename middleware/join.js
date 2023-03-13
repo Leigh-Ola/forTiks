@@ -16,9 +16,7 @@ export default function ({ route, store, redirect }) {
   ) {
     let mode = ['/login', '/signin'].includes(path) ? 'login' : undefined
     mode = ['/register', '/signup'].includes(path) ? 'register' : mode
-    mode = ['/forgot', '/forgotpassword'].includes(path)
-      ? 'forgotpassword'
-      : mode
+    mode = ['/forgot', '/forgotpassword'].includes(path) ? 'forgot' : mode
     mode = ['/verify'].includes(path) ? 'verify' : mode
     redirect('/join?mode=' + mode)
   }

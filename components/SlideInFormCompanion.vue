@@ -5,7 +5,7 @@
       :class="{'in': mode == self  }"
       class="form-slider-info relative lg:absolute h-36 lg:h-full w-full lg:w-1/2 bg-theme-green flex flex-col items-center justify-center left-pos -top-full"
     >
-      <b class="fun-text text-white text-xl">
+      <b class="fun-text text-white text-xl max-w-sm text-center">
         ALREADY HAVE AN ACCOUNT?
       </b>
       <button
@@ -19,7 +19,7 @@
     <div
       v-else-if="self == 'login'"
       :class="{'in': mode == self  }"
-        class="form-slider-info relative lg:absolute h-36 lg:h-full w-full lg:w-1/2 bgx-theme-orange bg-gradient-to-br from-theme-green to-theme-blue flex flex-col items-center justify-center right-pos"
+      class="form-slider-info relative lg:absolute h-36 lg:h-full w-full lg:w-1/2 bgx-theme-orange bg-gradient-to-br from-theme-green to-theme-blue flex flex-col items-center justify-center right-pos"
     >
       <b class="fun-text text-white text-xl">
         DON'T HAVE AN ACCOUNT?
@@ -29,6 +29,22 @@
         class="alt-button text-xs border-2 border-white border-solid rounded-full w-36 h-9 text-theme-green active:text-white bg-white active:bg-transparent mt-4 flex items-center justify-center"
         >
         REGISTER
+        </button
+      >
+    </div>
+    <div
+      v-else-if="self == 'forgot'"
+      :class="{'in': mode == self  }"
+      class="form-slider-info relative lg:absolute h-36 lg:h-full w-full lg:w-1/2 bgx-theme-orange bg-gradient-to-br from-theme-green to-theme-blue flex flex-col items-center justify-center right-pos -top-full"
+    >
+      <b class="fun-text text-white text-xl max-w-sm text-center">
+        ALREADY HAVE AN ACCOUNT?
+      </b>
+      <button
+          @click.stop="clicked"
+        class="alt-button text-xs border-2 border-white border-solid rounded-full w-36 h-9 text-theme-green active:text-white bg-white active:bg-transparent mt-4 flex items-center justify-center"
+        >
+        LOGIN
         </button
       >
     </div>

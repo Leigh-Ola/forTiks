@@ -1,6 +1,8 @@
 <template>
-    <main id="app-layout">
-        <div class="layout-sub w-full h-full lg:w-3/5 lg:h-5/6">
+    <main id="app-layout" 
+    >
+        <!-- @click.stop="tempModeChange('forgot')" -->
+        <div class="layout-sub w-full h-full lg:w-3/5 lg:h-5/6" @click.stop="">
             <Nuxt/>
         </div>
     </main>
@@ -39,6 +41,15 @@ body{
 
 <script>
 export default {
-    middleware: ['join']
+    middleware: ['join'],
+    methods: {
+        tempModeChange(newMode){
+            let mode = this.$store.state.joinPageMode;
+            mode == 'login'? 'register' : 'login';
+            let finalMode = newMode? newMode : mode;
+            console.log(`[FROM LAYOUT] Temporarily going to page '${finalMode}'`);
+            this.$store.commit('changeJoinPageMode', finalMode);
+        },
+    },
 }
 </script>

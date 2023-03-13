@@ -13,11 +13,18 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    // Load a Node.js module directly (here it's a Sass file)
+    // 'bulma',
+    // CSS file in the project
+    '~/assets/css/main.css',
+    '~/assets/css/vf-snow.min.css',
+    // SCSS file in the project
+    // '~/assets/css/main.scss',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
-
+  plugins: ['~/plugins/vue-formulate'],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -25,7 +32,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@braid/vue-formulate/nuxt',
+    // '@braid/vue-formulate/nuxt',
     '@nuxtjs/fontawesome',
   ],
 
@@ -47,6 +54,7 @@ export default {
   fontawesome: {
     icons: {
       solid: true,
+      regular: true,
       brands: true,
     },
   },

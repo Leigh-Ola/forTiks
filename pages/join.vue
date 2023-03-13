@@ -1,12 +1,16 @@
 <template>
   <div class="join-page-wrapper relative overflow-x-hidden overflow-y-hidden w-full h-full bg-white flex max-w-5xl max-h-[700px]">
-    <div class="z-10 w-full h-full flex flex-col lg:flex-row absolute left-0 top-0 justify-center">
+    <div class="z-10 w-full h-full flex flex-col lg:flex-row absolute left-0 top-0 justify-center" @click.stop="">
       <SlideInForm :mode="mode" self="login"/>
       <SlideInFormCompanion :mode="mode" self="login"/> 
     </div>
-    <div class="z-20 w-full h-full flex flex-col lg:flex-row absolute left-0 top-full justify-center">
+    <div class="z-20 w-full h-full flex flex-col lg:flex-row absolute left-0 top-full justify-center" @click.stop="">
       <SlideInForm :mode="mode" self="register"/>
       <SlideInFormCompanion :mode="mode" self="register"/> 
+    </div>
+    <div class="z-20 w-full h-full flex flex-col lg:flex-row absolute left-0 top-full justify-center" @click.stop="">
+      <SlideInForm :mode="mode" self="forgot"/>
+      <SlideInFormCompanion :mode="mode" self="forgot"/> 
     </div>
   </div>
 </template>
@@ -16,7 +20,7 @@
   Enter and leave animations can use different
   durations and timing functions.
 */
-.slide-fade-enter-active, .slide-fade-leave-active {
+/* .slide-fade-enter-active, .slide-fade-leave-active {
   transition: all 0.6s cubic-bezier(1, 0.5, 0.8, 1);
 }
 .slide-fade-enter-active{
@@ -25,15 +29,14 @@
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  /* transform: translateX(20px); */
   opacity: 0;
-}
+} */
 
 </style>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'joinPage',
   layout: 'auth',
   middleware({ store, route }) {
       let mode = route.query.mode;
@@ -47,9 +50,10 @@ export default {
   computed: {
     mode() {
       let mode = this.$store.state.joinPageMode;
-      mode = ['login', 'register', 'forgotpassword', 'verify'].includes(mode)
+      mode = ['login', 'register', 'forgot'].includes(mode)
         ? mode
         : 'login';
+      console.log({modeInPage: mode});
       return mode
     },
   },
@@ -60,9 +64,12 @@ export default {
     }, 1000);
   },
   methods: {
-    tempModeChange(){
+    tempModeChange(newMode){
       let mode = this.$store.state.joinPageMode;
-      this.$store.commit('changeJoinPageMode', mode == 'login'? 'register' : 'login');
+      mode == 'login'? 'register' : 'login';
+      let finalMode = newMode? newMode : mode;
+      console.log(`[FROM PAGE] Temporarily going to page '${finalMode}'`);
+      this.$store.commit('changeJoinPageMode', finalMode);
     },
   },
 
